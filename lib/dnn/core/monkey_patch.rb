@@ -1,5 +1,5 @@
 class Integer
-  alias dnn__add +
+  
   def +(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Add.(DNN::Tensor.convert(self), other)
@@ -7,8 +7,7 @@ class Integer
       dnn__add(other)
     end
   end
-
-  alias dnn__sub -
+  
   def -(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Sub.(DNN::Tensor.convert(self), other)
@@ -16,8 +15,7 @@ class Integer
       dnn__sub(other)
     end
   end
-
-  alias dnn__mul *
+  
   def *(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Mul.(DNN::Tensor.convert(self), other)
@@ -26,7 +24,6 @@ class Integer
     end
   end
 
-  alias dnn__div /
   def /(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Div.(DNN::Tensor.convert(self), other)
@@ -34,10 +31,15 @@ class Integer
       dnn__div(other)
     end
   end
+  
+  alias dnn__add +
+  alias dnn__sub -
+  alias dnn__mul *
+  alias dnn__div /
 end
 
 class Float
-  alias dnn__add +
+
   def +(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Add.(DNN::Tensor.convert(self), other)
@@ -46,7 +48,6 @@ class Float
     end
   end
 
-  alias dnn__sub -
   def -(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Sub.(DNN::Tensor.convert(self), other)
@@ -55,7 +56,6 @@ class Float
     end
   end
 
-  alias dnn__mul *
   def *(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Mul.(DNN::Tensor.convert(self), other)
@@ -64,7 +64,6 @@ class Float
     end
   end
 
-  alias dnn__div /
   def /(other)
     if other.is_a?(DNN::Tensor) || other.is_a?(DNN::Param)
       DNN::Layers::Div.(DNN::Tensor.convert(self), other)
@@ -72,6 +71,11 @@ class Float
       dnn__div(other)
     end
   end
+  
+  alias dnn__add +
+  alias dnn__sub -
+  alias dnn__mul *
+  alias dnn__div /
 end
 
 if RUBY_VERSION < "2.6.0"
